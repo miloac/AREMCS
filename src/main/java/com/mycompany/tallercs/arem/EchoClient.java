@@ -9,6 +9,7 @@ package com.mycompany.tallercs.arem;
  *
  * @author Juan Camilo Mantilla
  */
+//Codigo tomado de las diapositivas
 import java.io.*;
 import java.net.*;
 public class EchoClient {
@@ -31,7 +32,7 @@ public class EchoClient {
         String userInput;
         while ((userInput = stdIn.readLine()) != null) {
             out.println(userInput);
-            System.out.println("echo: " + in.readLine());
+            System.out.println(in.readLine());
         }
         out.close();
         in.close();
