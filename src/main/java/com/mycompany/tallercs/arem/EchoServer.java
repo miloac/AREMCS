@@ -33,10 +33,21 @@ public class EchoServer {
         String inputLine, outputLine;
         while ((inputLine = in.readLine()) != null) {
             System.out.println("Mensaje:" + inputLine);
-            outputLine = "Respuesta: " + inputLine ;
-            out.println(outputLine);
-            if (outputLine.equals("Respuesta: Bye."))
-            break;
+            try{
+                String lol ="fuffnc:h";
+                boolean aa = lol.startsWith("func:");
+                System.out.println(aa);
+                Integer num = Integer.parseInt(inputLine);
+                Integer res= num*num;
+                outputLine = "Respuesta: " + res;
+                out.println(outputLine);
+                if (outputLine.equals("Respuesta: Bye."))
+                break;
+            }catch(NumberFormatException e){
+                outputLine = "Error, ingrese un numero valido";
+                out.println(outputLine);
+                System.out.println("Valor invalido");
+            }
         }
         out.close();
         in.close();
