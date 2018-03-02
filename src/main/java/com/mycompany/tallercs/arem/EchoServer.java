@@ -34,9 +34,6 @@ public class EchoServer {
         while ((inputLine = in.readLine()) != null) {
             System.out.println("Mensaje:" + inputLine);
             try{
-                String lol ="fuffnc:h";
-                boolean aa = lol.startsWith("func:");
-                System.out.println(aa);
                 Integer num = Integer.parseInt(inputLine);
                 Integer res= num*num;
                 outputLine = "Respuesta: " + res;
