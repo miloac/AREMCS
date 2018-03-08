@@ -9,13 +9,9 @@ package com.mycompany.tallercs.arem;
  *
  * @author Juan Camilo Mantilla
  */
-//ESTA CLASE ES DEL PRIMER EJERCICIO, DEVOLVER EL CUADRADO DEL NUMERO
-
-
-
 import java.net.*;
 import java.io.*;
-public class EchoServer {
+public class Ejer4Server {
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = null;
         try {
@@ -26,6 +22,7 @@ public class EchoServer {
         }
         Socket clientSocket = null;
         try {
+        System.out.println("Listo para recibir ...");
             clientSocket = serverSocket.accept();
         } catch (IOException e) {
             System.err.println("Accept failed.");
@@ -35,20 +32,22 @@ public class EchoServer {
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         String inputLine, outputLine;
         while ((inputLine = in.readLine()) != null) {
-            System.out.println("Mensaje:" + inputLine);
-            try{
-                Integer num = Integer.parseInt(inputLine);
-                Integer res= num*num;
-                outputLine = "Respuesta: " + res;
-                out.println(outputLine);
-                if (outputLine.equals("Respuesta: Bye."))
+            System.out.println("Received: " + inputLine);
+            if (!in.ready()) {
                 break;
-            }catch(NumberFormatException e){
-                outputLine = "Error, ingrese un numero valido";
-                out.println(outputLine);
-                System.out.println("Valor invalido");
             }
         }
+        outputLine = "<!DOCTYPE html>"
+            + "<html>"
+            + "<head>"
+            + "<meta charset=\"UTF-8\">"
+            + "<title>Title of the document</title>\n"
+            + "</head>"
+            + "<body>"
+            + "My Web Site"
+            + "</body>"
+            + "</html>" + inputLine;
+        out.println(outputLine);
         out.close();
         in.close();
         clientSocket.close();

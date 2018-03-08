@@ -9,7 +9,9 @@ package com.mycompany.tallercs.arem;
  *
  * @author Juan Camilo Mantilla
  */
-//Codigo tomado de las diapositivas
+//ESTA CLASE ES DEL SEGUNDO EJERCICIO DE SOCKETS, FUNCIONES TRIGONOMETRICAS
+
+
 import java.net.*;
 import java.io.*;
 import java.lang.Math;
@@ -38,15 +40,18 @@ public class EchoServerFunc {
             System.out.println("Mensaje:" + inputLine);
             if(inputLine.startsWith("func:")){
                 String func = changeFunc(inputLine);
-                try{
-                    if(func.equals("")){
-                        throw new Exception();
-                    }
-                }catch(Exception e){
+                if(func.equals("Error")){
+                    //throw new Exception();
                     outputLine = "Error, ingrese una funcion valida";
                     out.println(outputLine);
                     System.out.println("Entrada invalida"); 
                 }
+                else{
+                    outputLine = "Funcion cambiada a "+ current;
+                    out.println(outputLine);
+                    System.out.println( "Funcion cambiada");
+                }
+                
             }
             else{
                 try{
@@ -94,13 +99,13 @@ public class EchoServerFunc {
         double res =0;
         switch(current){
             case "cos":
-                res = Math.cos(res);
+                res = Math.cos(num);
                 break;
             case "sin":
-                res = Math.sin(res);
+                res = Math.sin(num);
                 break;
             case "tan":
-                res = Math.tan(res);
+                res = Math.tan(num);
                 break;
         }
         
